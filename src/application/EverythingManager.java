@@ -1,5 +1,11 @@
 package application;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,16 +26,19 @@ public class EverythingManager {
 	Stage stage;
 	@FXML
 	Label msg_error;
-
+	String superpath;
+	static String home;
+	static String OS;
 	public void start(Stage primaryStage) {
 		try {
 			Parent root;
 			Scene scene;
 			stage = primaryStage;
 			root = FXMLLoader.load(getClass().getResource("LoginUI.fxml"));
-			scene = new Scene(root, 600, 400);
+			scene = new Scene(root, 650, 500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setScene(scene);
+			stage.setResizable(false);
 			stage.show();
 
 		} catch (Exception e) {
@@ -61,5 +70,69 @@ public class EverythingManager {
 			e.printStackTrace();
 			System.out.println("E: twrp7");
 		}
+	}
+	public void OSdetection() {
+		OS = System.getProperty("os.name");
+	}
+	public static void syscrashmsg(Exception e) {
+		long time = System.currentTimeMillis();
+		String errorData = e.toString();
+		String errorfile = "syscriticfail" + time + ".txt";
+		try {
+			print("System error:");
+			e.printStackTrace();
+			fileWriter(errorfile, errorData);
+		} catch (Exception e1) {
+			print("File writing error:");
+			e1.printStackTrace();
+		}
+		print("Failure data will be stored in: errlog-espa/syscriticfail" + time + ".txt");
+	}
+	public static void print(String a) {
+		System.out.println(a);
+	}
+	public static void fileWriter(String filename, String contents) {
+		try {
+			print("Writing file under FusionShield directory...: " + filename);
+			if (OS.startsWith("Windows")) {
+				String fspath = "C://errlog-espa//" + filename;
+				Writer writer = null;
+				File newfile = new File(filename);
+				if (newfile.exists()) {
+					System.out.println("File already exists!");
+				} else {
+					writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fspath), "utf-8"));
+					writer.write(contents);
+					writer.close();
+				}
+			} else if (OS.startsWith("Mac")) {
+				String fspath = home + "/errlog-espa/" + filename;
+				Writer writer = null;
+				File newfile = new File(fspath);
+				if (newfile.exists()) {
+					System.out.println("File already exists!");
+				} else {
+					writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fspath), "utf-8"));
+					writer.write(contents);
+					writer.close();
+				}
+			} else if (OS.contains("linux")) {
+				String fspath = home + "/errlog-espa/" + filename;
+				Writer writer = null;
+				File newfile = new File(fspath);
+				if (newfile.exists()) {
+					System.out.println("File already exists!");
+				} else {
+					writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fspath), "utf-8"));
+					writer.write(contents);
+					writer.close();
+				}
+			} else {
+				print("Unknown OS. Unable to find FusionShieldPath.");
+			}
+		} catch (Exception e) {
+			syscrashmsg(e);
+		}
+		
 	}
 }

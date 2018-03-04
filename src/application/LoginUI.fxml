@@ -7,58 +7,40 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #220005;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EverythingManager">
+<Pane prefHeight="537.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EverythingManager">
    <children>
-      <Pane layoutX="295.0" layoutY="13.0" prefHeight="374.0" prefWidth="291.0" style="-fx-background-color: #900118#900118;">
-         <children>
-            <TextField fx:id="username" layoutX="18.0" layoutY="173.0" prefHeight="27.0" prefWidth="259.0" />
-            <PasswordField fx:id="pwfield" layoutX="21.0" layoutY="267.0" prefHeight="27.0" prefWidth="256.0" />
-            <Label layoutX="19.0" layoutY="150.0" text="Username" textFill="WHITE">
-               <font>
-                  <Font name="Haan YoonGothic720" size="19.0" />
-               </font>
-            </Label>
-            <Label layoutX="22.0" layoutY="243.0" text="Password" textFill="WHITE">
-               <font>
-                  <Font name="Haan YoonGothic720" size="19.0" />
-               </font>
-            </Label>
-            <Text fill="WHITE" layoutX="64.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!">
-               <font>
-                  <Font name="Earth Orbiter" size="35.0" />
-               </font>
-            </Text>
-            <Button fx:id="loginButton" layoutX="86.0" layoutY="330.0" mnemonicParsing="false" onAction="#testprint" prefHeight="27.0" prefWidth="110.0" style="-fx-background-color: White;" text="Login" />
-            <Label fx:id="msg_error" layoutX="165.0" layoutY="154.0" prefHeight="15.0" prefWidth="110.0" text="404: Not Found" textAlignment="RIGHT" visible="false">
-               <textFill>
-                  <LinearGradient endX="1.0" endY="1.0">
-                     <stops>
-                        <Stop color="#f0ff00" />
-                        <Stop color="WHITE" offset="1.0" />
-                     </stops>
-                  </LinearGradient>
-               </textFill>
-            </Label>
-         </children></Pane>
-      <Text fill="WHITE" layoutX="18.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fusion Shield">
-         <font>
-            <Font name="Haan YoonGothic720" size="42.0" />
-         </font>
-      </Text>
-      <Text fill="#6b6a6a" layoutX="87.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TEST VERSION 1">
-         <font>
-            <Font name="Haan YoonGothic720" size="17.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="137.0" fitWidth="123.0" layoutX="92.0" layoutY="37.0">
+      <ImageView fitHeight="550.0" fitWidth="968.0" layoutX="-269.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../resources/icon.png" />
+            <Image url="@../../resources/bg.jpg" />
          </image>
       </ImageView>
+      <Pane layoutX="132.0" layoutY="47.0" prefHeight="444.0" prefWidth="386.0">
+         <children>
+            <ImageView fitHeight="140.0" fitWidth="125.0" layoutX="131.0">
+               <image>
+                  <Image url="@../../resources/icon.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="username" layoutX="64.0" layoutY="246.0" prefHeight="27.0" prefWidth="259.0" />
+            <PasswordField fx:id="pwfield" layoutX="65.0" layoutY="304.0" prefHeight="27.0" prefWidth="256.0" />
+            <Button fx:id="loginButton" layoutX="138.0" layoutY="391.0" mnemonicParsing="false" onAction="#testprint" prefHeight="27.0" prefWidth="110.0" style="-fx-background-image: White;" text="Login" />
+            <Label fx:id="msg_error" layoutX="198.0" layoutY="228.0" prefHeight="15.0" prefWidth="125.0" text="E: Security Error (6)" textAlignment="RIGHT" textFill="RED" visible="false" />
+            <ImageView fitHeight="76.0" fitWidth="379.0" layoutX="4.0" layoutY="131.0">
+               <image>
+                  <Image url="@../../resources/title.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="43.0" fitWidth="125.0" layoutX="47.0" layoutY="273.0">
+               <image>
+                  <Image url="@../../resources/Password.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="43.0" fitWidth="125.0" layoutX="49.0" layoutY="217.0">
+               <image>
+                  <Image url="@../../resources/usrname.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
    </children>
 </Pane>
